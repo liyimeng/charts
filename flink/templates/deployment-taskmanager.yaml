@@ -24,8 +24,8 @@ spec:
         - name: query
           containerPort: 6125
         env:
-        - name: FLINK_CONF_DIR
-          value: /etc/flink
+        - name: JOB_MANAGER_RPC_ADDRESS
+          value: {{ template "fullname" . }}-jobmanager
         resources:
           limits:
             cpu: {{ .Values.flink.num_slots_per_taskmanager }}

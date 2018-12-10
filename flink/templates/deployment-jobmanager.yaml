@@ -24,8 +24,8 @@ spec:
         - containerPort: 8081
           name: ui
         env:
-        - name: FLINK_CONF_DIR
-          value: /etc/flink
+        - name: JOB_MANAGER_RPC_ADDRESS
+          value: {{ template "fullname" . }}-jobmanager
         livenessProbe:
           httpGet:
             path: /overview
