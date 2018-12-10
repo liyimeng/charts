@@ -13,3 +13,6 @@ spec:
   selector:
     app: {{ template "fullname" . }}
     component: jobmanager
+  #type: "LoadBalancer"
+  #  balancer: "" 
+  type: "NodePort"
