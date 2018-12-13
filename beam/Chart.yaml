@@ -1,0 +1,11 @@
+apiVersion: v1
+description: Apache Beam® is an open-source data pipeline SDK (Only Java supported in this version).
+name: beam
+version: 0.1.0
+home: https://beam.apache.org
+sources:
+- https://github.com/apache/beam
+icon: https://beam.apache.org/images/logos/full-color/nameless/beam-logo-full-color-nameless.svg
+maintainers:
+- name: Liyi Meng
+  email: liyi,meng@ericsson.com

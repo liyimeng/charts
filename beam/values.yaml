@@ -1,0 +1,4 @@
+image: liyimeng/beamsdk
+imageTag: latest
+imagePullPolicy: Always
+token: changeme

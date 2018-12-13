@@ -1,0 +1,29 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: beam-sdk
+  labels:
+    application: beam-sdk
+spec:
+  # 1 Pods should exist at all times.
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        application: beam-sdk
+    spec:
+      terminationGracePeriodSeconds: 5
+      containers:
+      - name: beam-sdk
+        image: {{ .Values.image }}:{{ .Values.imageTag }}
+        imagePullPolicy: {{ .Values.imagePullPolicy }}
+        #image: liyimeng/beamsdk
+        #imagePullPolicy: Always
+        args:
+        - --NotebookApp.token='{{ .Values.token }}'
+        ### checks that jupyter server is up and running
+        livenessProbe:
+          tcpSocket:
+            port: 8888
+          initialDelaySeconds: 1
+          timeoutSeconds: 1

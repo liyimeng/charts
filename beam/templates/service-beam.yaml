@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    application: beam-sdk
+  name: beam-sdk
+spec:
+  externalName: beam-sdk
+  ports:
+  - name: http-port-tcp
+    protocol: TCP
+    port: 8888
+    targetPort: 8888
+  - name: httpfile-port-tcp
+    protocol: TCP
+    port: 8899
+    targetPort: 8899
+  selector:
+    application: beam-sdk
+  type: NodePort
+# Use type loadbalancer if needed
+#  type: LoadBalancer
