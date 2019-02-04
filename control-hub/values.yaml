@@ -13,7 +13,7 @@ ingress:
   enabled: true
   proto: https
   # Used to create an Ingress record.
-  domain: example.com
+  domain: cluster.local
   host: streamsets
   annotations:
     # kubernetes.io/ingress.class: nginx
@@ -21,6 +21,10 @@ ingress:
     # ingress.kubernetes.io/rewrite-target: /
     # kubernetes.io/ingress.allow-http: "true"
     # kubernetes.io/ingress.class: traefik
+pod:
+  runAsUser: 1100
+  runAsGroup: 1100
+
 istio:
   # set to true to use configure Istio Gateway + VirtualService instead of Ingress
   # requires that the target namespace has automatic sidecar injection enabled
@@ -169,18 +173,18 @@ deployments:
       env:
         <<: *COMMON_ENV
 
-adminPassword:  # default is random password
+adminPassword: admin123 # default is random password
 schInfluxUser: streamsets
-schInfluxPassword:  # default is random password
+schInfluxPassword:  streamsets123 # default is random password
 
 ##
 ## MySQL chart configuration
 ##
 mysql:
   enabled: true
-  mysqlRootPassword:  # default is random password -- you cannot currently scale when using random
+  mysqlRootPassword:  admin123 # default is random password -- you cannot currently scale when using random
   mysqlUser: streamsets
-  mysqlPassword:  # default is random password
+  mysqlPassword:  admin123 # default is random password
   persistence:
     enabled: true
     # storageClass: "-"
