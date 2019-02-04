@@ -51,6 +51,8 @@ spec:
           imagePullPolicy: {{ $.Values.image.pullPolicy }}
           securityContext:
             runAsNonRoot: true
+            runAsUser: {{ $.Values.pod.runAsUser }}
+            runAsGroup: {{ $.Values.pod.runAsGroup }}
           env:
           {{- range $key, $val := $deployment.container.env }}
           - name: {{ $key }}
